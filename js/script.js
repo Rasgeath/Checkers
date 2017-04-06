@@ -102,19 +102,47 @@ function clickdown(){
 				//console.log(result);
 				console.log(coordonnée_p2[0]+coordonnée_p2[1]*10);
 				
-				
-				
-				Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
-				Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
-				console.log('id', id);
-				document.getElementById(id).parentElement.innerHTML="";
 				if(joueur_actuel){
+					if(coordonnée_p2[1]==coordonnée_p1[1]+1){
+						if(coordonnée_p2[0]==(coordonnée_p1[0]-1) || coordonnée_p2[0]==(coordonnée_p1[0]+1)){
+							Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
+							Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+							document.getElementById(id).parentElement.innerHTML="";
+							if(joueur_actuel){
+								document.getElementById(this.id).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
+							}else{
+								document.getElementById(this.id).innerHTML="<img src='img/wfairy.PNG' id='" + id + "'>";
+							}
+							valide=true;
+						}
+					}						
+				}else{
+					if(coordonnée_p2[1]==coordonnée_p1[1]-1){
+						if(coordonnée_p2[0]==(coordonnée_p1[0]-1) || coordonnée_p2[0]==(coordonnée_p1[0]+1)){
+							Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
+							Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+							document.getElementById(id).parentElement.innerHTML="";
+							if(joueur_actuel){
+								document.getElementById(this.id).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
+							}else{
+								document.getElementById(this.id).innerHTML="<img src='img/wfairy.PNG' id='" + id + "'>";
+							}
+							valide=true;
+						}
+					}
+				}
+				
+				/*Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
+				Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";*/
+				console.log('id', id);
+				//document.getElementById(id).parentElement.innerHTML="";
+				/*if(joueur_actuel){
 					document.getElementById(this.id).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
 				}else{
 					document.getElementById(this.id).innerHTML="<img src='img/wfairy.PNG' id='" + id + "'>";
-				}
+				}*/
 				console.log("Déplacement effectué");
-				valide=true;
+				//valide=true;
 				//joueur_actuel=!joueur_actuel;
 			}else{
 				console.log("Veuillez sélectionner une autre case !");
