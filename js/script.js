@@ -107,28 +107,47 @@ function clickdown(){
 						if(coordonnée_p2[0]==(coordonnée_p1[0]-1) || coordonnée_p2[0]==(coordonnée_p1[0]+1)){
 							Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
 							Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+							document.getElementById(id).parentElement.style.backgroundColor="";
 							document.getElementById(id).parentElement.innerHTML="";
 							if(joueur_actuel){
 								document.getElementById(this.id).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
+								//document.getElementById(this.id).style.backgroundColor="";
+								//document.getElementById(id).parentElement.style.backgroundColor="";
 							}else{
 								document.getElementById(this.id).innerHTML="<img src='img/wfairy.PNG' id='" + id + "'>";
+								//document.getElementById(this.id).style.backgroundColor="";
+								//document.getElementById(id).parentElement.style.backgroundColor="";
 							}
+							document.getElementById(this.id).style.backgroundColor="";
 							valide=true;
+						}else{
+							document.getElementById(this.id).style.backgroundColor="";
 						}
+					}else{
+						document.getElementById(this.id).style.backgroundColor="";
 					}						
 				}else{
 					if(coordonnée_p2[1]==coordonnée_p1[1]-1){
 						if(coordonnée_p2[0]==(coordonnée_p1[0]-1) || coordonnée_p2[0]==(coordonnée_p1[0]+1)){
 							Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
 							Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+							document.getElementById(id).parentElement.style.backgroundColor="";
 							document.getElementById(id).parentElement.innerHTML="";
 							if(joueur_actuel){
 								document.getElementById(this.id).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
+								//document.getElementById(this.id).style.backgroundColor="";
+								//document.getElementById(id).style.backgroundColor="";
 							}else{
 								document.getElementById(this.id).innerHTML="<img src='img/wfairy.PNG' id='" + id + "'>";
+								//document.getElementById(id).style.backgroundColor="";
 							}
+							document.getElementById(this.id).style.backgroundColor="";
 							valide=true;
+						}else{
+							document.getElementById(this.id).style.backgroundColor="";
 						}
+					}else{
+						document.getElementById(this.id).style.backgroundColor="";
 					}
 				}
 				
