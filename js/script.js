@@ -164,6 +164,10 @@ function clickdown(){
 				//valide=true;
 				//joueur_actuel=!joueur_actuel;
 			}else{
+				document.getElementById(id).parentElement.style.backgroundColor="";
+				this.style.backgroundColor = "red";
+				coordonnée_p1=[result[1]-1,result[3]-1];
+				id=document.getElementById(this.id).children[0].id;
 				console.log("Veuillez sélectionner une autre case !");
 				//i=!i;
 				//joueur_actuel!=joueur_actuel;
