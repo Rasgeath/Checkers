@@ -50,6 +50,7 @@ var i=true;
 var coordonnée_p1;
 var coordonnée_p2;
 var joueur_actuel=true; //joueur1
+var id;
 
 function clickdown(){
 	var v_case;
@@ -75,6 +76,8 @@ function clickdown(){
 				console.log(coordonnée_p1);
 				console.log("Veuillez sélectionner une autre case pour effectuer le déplacement");
 				valide=true;
+				id=document.getElementById(this.id).children[0].id;
+				//console.log('sfs',id);
 				//i=!i;
 			}else{
 				console.log("Veuillez sélectionner un de vos pions !");
@@ -97,11 +100,24 @@ function clickdown(){
 				coordonnée_p2=[result[1]-1,result[3]-1];
 				console.log(coordonnée_p2);
 				//console.log(result);
+				console.log(coordonnée_p2[0]+coordonnée_p2[1]*10);
+				
+				
+				
+				Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
+				Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+				console.log('id', id);
+				document.getElementById(id).parentElement.innerHTML="";
+				if(joueur_actuel){
+					document.getElementById(this.id).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
+				}else{
+					document.getElementById(this.id).innerHTML="<img src='img/wfairy.PNG' id='" + id + "'>";
+				}
 				console.log("Déplacement effectué");
 				valide=true;
 				//joueur_actuel=!joueur_actuel;
 			}else{
-				console.log("Veuillez sélectionner un de vos pions !");
+				console.log("Veuillez sélectionner une autre case !");
 				//i=!i;
 				//joueur_actuel!=joueur_actuel;
 			}
