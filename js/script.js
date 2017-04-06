@@ -60,7 +60,7 @@ function clickdown(){
 		v_case=2;
 	}
 	if(i==true){
-		while(valide==false){
+		//while(valide==false){
 			//console.log("Sélectionner un de vos pions");
 			//coordonnée_p1=[];
 			var result = this.id.split(" ");
@@ -69,37 +69,45 @@ function clickdown(){
 			console.log(Board[(result[1]-1)+(result[3]-1)*10]);
 			
 			if(Board[(result[1]-1)+(result[3]-1)*10]==v_case){
+				this.style.backgroundColor = "red";
 				console.log("Vous avez bien sélectionner un de vos pions");
 				coordonnée_p1=[result[1]-1,result[3]-1];
 				console.log(coordonnée_p1);
 				console.log("Veuillez sélectionner une autre case pour effectuer le déplacement");
 				valide=true;
+				//i=!i;
 			}else{
 				console.log("Veuillez sélectionner un de vos pions !");
+				//i=!i;
 			}
-		}
+		//}
 		
 	}
-	valide=false;
+	//valide=false;
 	if(i==false){
-		while(valide==false){
+		valide=false;
+		//while(valide==false){
 			//console.log("Sélectionner un de vos pions");
 			var result = this.id.split(" ");
 			console.log(Board[(result[1]-1)+(result[3]-1)*10]);
 			
-			if(Board[(result[1]-1)+(result[3]-1)*10]==v_case){
-				console.log("Vous avez bien sélectionner un de vos pions");
+			if(Board[(result[1]-1)+(result[3]-1)*10]!=v_case){
+				this.style.backgroundColor = "red";
+				console.log("Vous avez bien sélectionner une case");
 				coordonnée_p2=[result[1]-1,result[3]-1];
 				console.log(coordonnée_p2);
 				//console.log(result);
 				console.log("Déplacement effectué");
 				valide=true;
+				//joueur_actuel=!joueur_actuel;
 			}else{
 				console.log("Veuillez sélectionner un de vos pions !");
+				//i=!i;
+				//joueur_actuel!=joueur_actuel;
 			}
-		}	
+		//}	
 			
-
+		if(valide)
 		joueur_actuel=!joueur_actuel;
 		if(joueur_actuel==true){
 			console.log("Joueur1, à vous de jouer");
@@ -108,9 +116,12 @@ function clickdown(){
 		}
 		
 	}
-	i=!i;
+	if(valide){
+		i=!i;
+	}
+	//i=!i;
 	console.log(this.id);
-	this.style.backgroundColor = "red";
+	//this.style.backgroundColor = "red";
 	//i++;
 	console.log(i);
 }
