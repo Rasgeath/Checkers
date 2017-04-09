@@ -51,6 +51,7 @@ var coordonnée_p1;
 var coordonnée_p2;
 var joueur_actuel=true; //joueur1
 var id;
+var id2=1000;
 
 function clickdown(){
 	var v_case;
@@ -104,30 +105,154 @@ function clickdown(){
 								
 				if((joueur_actuel==true && coordonnée_p2[1]==coordonnée_p1[1]+1) || (joueur_actuel==false && coordonnée_p2[1]==coordonnée_p1[1]-1)){
 					if(coordonnée_p2[0]==(coordonnée_p1[0]-1) || coordonnée_p2[0]==(coordonnée_p1[0]+1)){
-						Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
-							Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
-							document.getElementById(id).parentElement.style.backgroundColor="";
-							document.getElementById(id).parentElement.innerHTML="";
-							if(joueur_actuel){
+						var ajoutimage=0;
+						/*if(joueur_actuel==true && Board[coordonnée_p2[0]+coordonnée_p2[1]*10]==2){
+							Board[coordonnée_p2[0]+coordonnée_p2[1]*10]="0";
+							if(coordonnée_p2[0]==(coordonnée_p1[0]-1)){
+								if(joueur_actuel){
+									Board[coordonnée_p2[0]-1+coordonnée_p2[1]*10+1]="1";
+								}else{
+									Board[coordonnée_p2[0]-1+coordonnée_p2[1]*10+1]="1";	
+								}
+							}
+						}*/
+						if(coordonnée_p2[0]==(coordonnée_p1[0]-1)){
+							if(joueur_actuel==true && Board[coordonnée_p2[0]+coordonnée_p2[1]*10]==2){
+								//Board[coordonnée_p2[0]-1+coordonnée_p2[1]*10+1]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10]; //1
+								//document.getElementById("cel-c " + coordonnée_p2[0]-1+1 + " -l " + coordonnée_p2[1]*10+1+1).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
+								if(Board[coordonnée_p2[0]-1+(coordonnée_p2[1]+1)*10]==0){
+									if(coordonnée_p2[0]-1>=0 && coordonnée_p2[0]-1<=9 ){ //si on reste à l'intérieur du tableau
+									Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=0;
+									Board[coordonnée_p2[0]-1+(coordonnée_p2[1]+1)*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10]; //2
+									//Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+									console.log((coordonnée_p2[0]+1+1)," ",(coordonnée_p2[1]));
+									document.getElementById(this.id).innerHTML="";
+									document.getElementById("cel-c " + (coordonnée_p2[0]+1-1) + " -l " + (coordonnée_p2[1]+1+1)).innerHTML="<img src='img/bfairy.PNG' id='" + id2 + "'>";
+									id2++;
+									ajoutimage=1;
+									}else{
+										console.log("On sort du tableau");
+										ajoutimage=0; // On va prendre la condition du (si on a une case derriere) pour éviter qu'on sorte le pion du tableau
+									}
+								}else{
+									ajoutimage=0;
+								}	
+							}
+							if(joueur_actuel==false && Board[coordonnée_p2[0]+coordonnée_p2[1]*10]==1){
+								//Board[coordonnée_p2[0]-1+coordonnée_p2[1]*10-1]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10]; //2
+								//document.getElementById("cel-c " + coordonnée_p2[0]-1+1 + " -l " + coordonnée_p2[1]*10-1+1).innerHTML="<img src='img/wfairy.PNG' id='" + id + "'>";
+								if(Board[coordonnée_p2[0]-1+(coordonnée_p2[1]-1)*10]==0){
+									if(coordonnée_p2[0]-1>=0 && coordonnée_p2[0]-1<=9 ){ //si on reste à l'intérieur du tableau
+									Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=0;
+									Board[coordonnée_p2[0]-1+(coordonnée_p2[1]-1)*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10]; //2
+									//Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+									console.log((coordonnée_p2[0]+1-1)," ",(coordonnée_p2[1]));
+									document.getElementById(this.id).innerHTML="";
+									document.getElementById("cel-c " + (coordonnée_p2[0]+1-1) + " -l " + (coordonnée_p2[1])).innerHTML="<img src='img/wfairy.PNG' id='" + id2 + "'>";
+									id2++;
+									ajoutimage=1;
+									}else{
+										console.log("On sort du tableau");
+										ajoutimage=0; // On va prendre la condition du (si on a une case derriere) pour éviter qu'on sorte le pion du tableau
+									}
+								}else{
+									ajoutimage=0;
+								}
+							}
+						}
+						
+						if(coordonnée_p2[0]==(coordonnée_p1[0]+1)){
+							if(joueur_actuel==true && Board[coordonnée_p2[0]+coordonnée_p2[1]*10]==2){
+								//Board[coordonnée_p2[0]+1+coordonnée_p2[1]*10+1]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10]; //1
+								//document.getElementById("cel-c " + coordonnée_p2[0]+1+1 + " -l " + coordonnée_p2[1]*10+1+1).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
+								if(Board[coordonnée_p2[0]+1+(coordonnée_p2[1]+1)*10]==0){
+									if(coordonnée_p2[0]+1>=0 && coordonnée_p2[0]+1<=9 ){ //si on reste à l'intérieur du tableau
+									Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=0;
+									Board[coordonnée_p2[0]+1+(coordonnée_p2[1]+1)*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10]; //2
+									//Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+									console.log((coordonnée_p2[0]+1+1)," ",(coordonnée_p2[1]));
+									document.getElementById(this.id).innerHTML="";
+									document.getElementById("cel-c " + (coordonnée_p2[0]+1+1) + " -l " + (coordonnée_p2[1]+1+1)).innerHTML="<img src='img/bfairy.PNG' id='" + id2 + "'>";
+									id2++;
+									ajoutimage=1;
+									}else{
+										console.log("On sort du tableau");
+										ajoutimage=0; // On va prendre la condition du (si on a une case derriere) pour éviter qu'on sorte le pion du tableau
+									}
+								}else{
+									ajoutimage=0;
+								}								
+							}
+							if(joueur_actuel==false && Board[coordonnée_p2[0]+coordonnée_p2[1]*10]==1){
+								if(Board[coordonnée_p2[0]+1+1-1+(coordonnée_p2[1]-1)*10]==0){
+									if(coordonnée_p2[0]+1+1-1>=0 && coordonnée_p2[0]+1+1-1<=9 ){ //si on reste à l'intérieur du tableau
+									Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=0;
+									Board[coordonnée_p2[0]+1+1-1+(coordonnée_p2[1]-1)*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10]; //2
+									//Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+									console.log((coordonnée_p2[0]+1+1)," ",(coordonnée_p2[1]));
+									document.getElementById(this.id).innerHTML="";
+									document.getElementById("cel-c " + (coordonnée_p2[0]+1+1) + " -l " + (coordonnée_p2[1])).innerHTML="<img src='img/wfairy.PNG' id='" + id2 + "'>";
+									id2++;
+									ajoutimage=1;
+									}else{
+										console.log("On sort du tableau");
+										ajoutimage=0; // On va prendre la condition du (si on a une case derriere) pour éviter qu'on sorte le pion du tableau
+									}
+								}else{
+									ajoutimage=0;
+								}
+							}							
+						}
+						
+						
+						if(ajoutimage!=1){
+							//console.log("JE PASSE PAR LA")
+							Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
+							ajoutimage=0;
+							/*if(joueur_actuel){
 								document.getElementById(this.id).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
 								//document.getElementById(this.id).style.backgroundColor="";
 								//document.getElementById(id).parentElement.style.backgroundColor="";
 							}else{
 								document.getElementById(this.id).innerHTML="<img src='img/wfairy.PNG' id='" + id + "'>";
+								console.log("okok");
+								console.log(this.id);
+								//document.getElementById(this.id).style.backgroundColor="red";
+								//document.getElementById(this.id).style.backgroundColor="";
+								//document.getElementById(id).parentElement.style.backgroundColor="";
+							}*/
+						}
+						Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";
+						document.getElementById(id).parentElement.style.backgroundColor="";
+						document.getElementById(id).parentElement.innerHTML="";
+
+						if(joueur_actuel){
+								if(ajoutimage==0)
+								document.getElementById(this.id).innerHTML="<img src='img/bfairy.PNG' id='" + id + "'>";
+								//document.getElementById(this.id).style.backgroundColor="";
+								//document.getElementById(id).parentElement.style.backgroundColor="";
+							}else{
+								if(ajoutimage==0)
+								document.getElementById(this.id).innerHTML="<img src='img/wfairy.PNG' id='" + id + "'>";
+								console.log("okok");
+								console.log(this.id);
+								//document.getElementById(this.id).style.backgroundColor="red";
 								//document.getElementById(this.id).style.backgroundColor="";
 								//document.getElementById(id).parentElement.style.backgroundColor="";
 							}
-							document.getElementById(this.id).style.backgroundColor="";
-							valide=true;
+						
+						document.getElementById(this.id).style.backgroundColor="";
+						valide=true;
 					}else{
-							document.getElementById(this.id).style.backgroundColor="";
+						document.getElementById(this.id).style.backgroundColor="";
 					}
 				}else{
-						document.getElementById(this.id).style.backgroundColor="";
+					document.getElementById(this.id).style.backgroundColor="";
 				}
 				
 				/*Board[coordonnée_p2[0]+coordonnée_p2[1]*10]=Board[coordonnée_p1[0]+coordonnée_p1[1]*10];
 				Board[coordonnée_p1[0]+coordonnée_p1[1]*10]="0";*/
+				console.log("sdfsdf",this.id);
 				console.log('id', id);
 				//document.getElementById(id).parentElement.innerHTML="";
 				/*if(joueur_actuel){
